@@ -1,14 +1,13 @@
 package homework6.classes;
 
-import homework3.interfaces.IHuman;
-import homework5.exceptions.InvalidPersonAge;
 import homework6.customLogger.CustomLogger;
+import homework6.exceptions.InvalidPersonAge;
 
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public final class Child extends Person implements IHuman {
+public final class Child extends Person{
 
     private CustomLogger customLogger = new CustomLogger(Logger.GLOBAL_LOGGER_NAME);
     File file = new File("src/homework6/Log.txt");

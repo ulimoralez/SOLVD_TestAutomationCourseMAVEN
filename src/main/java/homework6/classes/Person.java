@@ -1,17 +1,15 @@
 package homework6.classes;
 
-import homework3.interfaces.IHuman;
-import homework3.interfaces.IPerson;
-import homework5.exceptions.InvalidPersonAge;
+
 import homework6.customLogger.CustomLogger;
+import homework6.exceptions.*;
+import homework6.interfaces.*;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

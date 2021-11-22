@@ -1,8 +1,8 @@
 package homework6.classes;
 
-import homework3.interfaces.IProfessor;
-import homework5.exceptions.InvalidProfessorID;
 import homework6.customLogger.CustomLogger;
+import homework6.interfaces.*;
+import homework6.exceptions.*;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -43,11 +43,9 @@ public class Professor extends Person implements IProfessor {
 
     //Overriding interface and super class methods
     public void changeId(int professorId){
-            for (int i = 0; i < professorIDs.size(); i++) {
-                if(professorIDs.get(i) == professorId){
-                    this.id = professorId;
-                }else {
-                    throw new InvalidProfessorID();
+        for (int i = 0; i < professorIDs.size(); i++) {
+            if (professorIDs.get(i) == professorId) {
+                this.id = professorId;
             }
         }
     }

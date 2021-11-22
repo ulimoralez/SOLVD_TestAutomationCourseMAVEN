@@ -1,13 +1,11 @@
 package homework6.classes;
 
-import homework3.interfaces.IStudent;
-import homework5.exceptions.TooMuchStudyHours;
+import homework6.interfaces.IStudent;
+import homework6.exceptions.TooMuchStudyHours;
 import homework6.customLogger.CustomLogger;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Objects;
-import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -51,7 +49,7 @@ public class Student extends Person implements IStudent{
         this.collegeName = collegeName;
         this.careerName = careerName;
     }
-    public void studyHoursInADay(int hours){
+    public void studyHoursInADay(int hours) throws TooMuchStudyHours {
         if(hours > 24){
             throw new ArithmeticException("This is impossible, a day only have 24 hours");
         }else{

@@ -1,13 +1,11 @@
 package homework6.classes;
 
-import homework3.interfaces.IProgrammer;
-import homework5.exceptions.InvalidYearsOfExperience;
+import homework6.interfaces.IProgrammer;
+import homework6.exceptions.InvalidYearsOfExperience;
 import homework6.customLogger.CustomLogger;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Objects;
-import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -43,7 +41,7 @@ public class Programmer extends Person implements IProgrammer{
     public int getYearsOfExperience() {
         return yearsOfExperience;
     }
-    public void setYearsOfExperience(int yearsOfExperience) {
+    public void setYearsOfExperience(int yearsOfExperience) throws InvalidYearsOfExperience {
         if(yearsOfExperience > 70){
             throw new InvalidYearsOfExperience();
         }else {
