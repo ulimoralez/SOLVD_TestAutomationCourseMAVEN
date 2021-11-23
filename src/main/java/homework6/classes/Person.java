@@ -1,16 +1,14 @@
 package homework6.classes;
 
 
-import homework6.customLogger.CustomLogger;
+import homework6.customLogger.MyLogger;
 import homework6.exceptions.*;
 import homework6.interfaces.*;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Person implements IPerson, IHuman {
@@ -19,13 +17,11 @@ public class Person implements IPerson, IHuman {
     private String gender;
     private int age;
     static List<String> favouriteFood = new ArrayList<>();
-    CustomLogger customLogger = new CustomLogger(Logger.GLOBAL_LOGGER_NAME);
-    File file = new File("src/homework6/Log.txt");
+    Logger log = new MyLogger(Person.class.getName()).getInitializedLogger();
+    static Logger staticLogger = new MyLogger(Person.class.getName()).getInitializedLogger();
 
     //Constructors
-    public Person(){
-        customLogger.setupLogger(file);
-    }
+    public Person(){}
     public Person(String firstName, String lastName, int age) {
         this(firstName, lastName);
         setAge(age);
@@ -67,6 +63,7 @@ public class Person implements IPerson, IHuman {
     }
     public void setAge(int age) {
         if(age > 130 || age < 0){
+            log.severe(new InvalidPersonAge().getMessage());
             throw new InvalidPersonAge();
         }else{
             this.age = age;
@@ -93,7 +90,7 @@ public class Person implements IPerson, IHuman {
     }
     public static void addFavouriteFood(String food){
         favouriteFood.add(food);
-        new CustomLogger(Logger.GLOBAL_LOGGER_NAME).print(Level.FINE,Arrays.toString(favouriteFood.toArray()));
+        staticLogger.info(Arrays.toString(favouriteFood.toArray()));
     }
 
     //Overriding Object Methods
@@ -122,18 +119,18 @@ public class Person implements IPerson, IHuman {
     @Override
     public void sayHello(String firstName) {
         try {
-            customLogger.print(Level.FINE,"Hello! My name is: "+firstName);
+            log.info("Hello! My name is: "+firstName);
         }catch (Exception e){
-            customLogger.print(Level.FINE,"Error in Person->sayHello: "+e);
+            log.info("Error in Person->sayHello: "+e);
         }
 
     }
     @Override
     public void eat() {
-        customLogger.print(Level.FINE,"I eat any type of food");
+        log.info("I eat any type of food");
     }
     @Override
     public void drink() {
-        customLogger.print(Level.FINE, "I drink water");
+        log.info("I drink water");
     }
 }

@@ -1,14 +1,12 @@
 package homework6.classes;
 
-import homework6.customLogger.CustomLogger;
+import homework6.customLogger.MyLogger;
 
-import java.io.File;
 import java.util.*;
 import java.util.logging.Logger;
 
 public class University {
-    CustomLogger customLogger = new CustomLogger(Logger.GLOBAL_LOGGER_NAME);
-    File file = new File("src/homework6/Log.txt");
+    Logger log = new MyLogger(University.class.getName()).getInitializedLogger();
 
     //The unique way to create it it's in the constructor
     private LinkedHashSet classroom = new LinkedHashSet();
@@ -28,7 +26,6 @@ public class University {
         this.classroom.add(student3);
         this.classroom.add(student4);
         this.classroom.add(student5);
-        customLogger.setupLogger(file);
     }
 
     //Adders

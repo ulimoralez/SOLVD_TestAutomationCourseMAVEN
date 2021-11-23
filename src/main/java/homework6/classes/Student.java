@@ -1,19 +1,16 @@
 package homework6.classes;
 
+import homework6.customLogger.MyLogger;
 import homework6.interfaces.IStudent;
 import homework6.exceptions.TooMuchStudyHours;
-import homework6.customLogger.CustomLogger;
 
-import java.io.File;
 import java.util.Objects;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Student extends Person implements IStudent{
     private String collegeName;
     private String careerName;
-    CustomLogger customLogger = new CustomLogger(Logger.GLOBAL_LOGGER_NAME);
-    File file = new File("src/homework6/Log.txt");
+    Logger log = new MyLogger(Student.class.getName()).getInitializedLogger();
 
     //Constructors
     public Student(){
@@ -22,7 +19,6 @@ public class Student extends Person implements IStudent{
     public Student(String firstName, String lastName, String gender, int age, String collegeName, String careerName) {
         this(firstName, lastName, gender, collegeName, careerName);
         super.setAge(age);
-        customLogger.setupLogger(file);
     }
     public Student(String firstName, String lastName, int age, String collegeName, String careerName) {
         super(firstName, lastName, age);
@@ -41,7 +37,6 @@ public class Student extends Person implements IStudent{
     public void changeInfo(String collegeName, String careerName){
         this.collegeName = collegeName;
         this.careerName = careerName;
-        customLogger.setupLogger(file);
     }
     public void changeInfo(String firstName, String lastName, String collegeName, String careerName){
         super.setFirstName(firstName);
@@ -56,7 +51,7 @@ public class Student extends Person implements IStudent{
             if(hours > 15){
                 throw new TooMuchStudyHours();
             }else{
-                customLogger.print(Level.FINE,"Sounds great! Keep on it!");
+                log.info("Sounds great! Keep on it!");
             }
         }
     }
@@ -89,10 +84,10 @@ public class Student extends Person implements IStudent{
     }
     @Override
     public void eat() {
-        customLogger.print(Level.FINE, "I eat when I'm not sleeping");
+        log.info("I eat when I'm not sleeping");
     }
     @Override
     public void drink() {
-        customLogger.print(Level.FINE,"I love drink coffee");
+        log.info("I love drink coffee");
     }
 }

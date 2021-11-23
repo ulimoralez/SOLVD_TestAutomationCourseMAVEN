@@ -1,17 +1,15 @@
 package homework6.classes;
 
-import homework6.customLogger.CustomLogger;
+import homework6.customLogger.MyLogger;
 import homework6.exceptions.InvalidPersonAge;
 
-import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public final class Child extends Person{
 
-    private CustomLogger customLogger = new CustomLogger(Logger.GLOBAL_LOGGER_NAME);
-    File file = new File("src/homework6/Log.txt");
-
+    Logger log = new MyLogger(Child.class.getName()).getInitializedLogger();
+    static Logger staticLogger = new MyLogger(Child.class.getName()).getInitializedLogger();
     static{
         final int childAge = 7;
         String favouriteFood = "Pizza";
@@ -19,18 +17,17 @@ public final class Child extends Person{
     public static String FAVOURITE_DRINK = "Grape Juice";
 
     //Constructors
-    public Child(){
-        customLogger.setupLogger(file);
-    }
+    public Child(){}
     public Child(String firstName, String lastName) {
         super(firstName, lastName);
     }
     //Methods and functions
     //Make a final method does not change anything because anyway this class can't be inherited
     final void sayHello(){
-        customLogger.print(Level.FINE,"Helloooo!");
+        log.info("Helloooo!");
     }
-    public static void sayFAvouriteGame(){new CustomLogger(Logger.GLOBAL_LOGGER_NAME).print(Level.FINE,"My favourite game is Minecraft");
+    public static void sayFAvouriteGame(){
+        staticLogger.info("I love to play Minecraft");
     }
 
     //Overriding interface functions
@@ -45,10 +42,10 @@ public final class Child extends Person{
 
     @Override
     public void eat() {
-        customLogger.print(Level.FINE,"I like: "+favouriteFood);
+        log.info("I like: "+favouriteFood);
     }
     @Override
     public void drink() {
-        customLogger.print(Level.FINE,"I drink: "+FAVOURITE_DRINK);
+        log.info("I drink: "+FAVOURITE_DRINK);
     }
 }

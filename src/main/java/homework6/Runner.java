@@ -1,19 +1,15 @@
 package homework6;
 
 import homework6.classes.University;
-import homework6.customLogger.CustomLogger;
+import homework6.customLogger.MyLogger;
 import homework6.utils.CreatedObjects;
 
-import java.io.File;
 import java.util.Date;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Runner {
     public static void main(String[] args) {
-        CustomLogger customLogger = new CustomLogger(Logger.GLOBAL_LOGGER_NAME);
-        File file = new File("src/homework6/Log.txt");
-        customLogger.setupLogger(file);
+        Logger log = new MyLogger(Runner.class.getName()).getInitializedLogger();
 
         //Using the class University wich has a LinkedHashSet - HashMap - TreeMap
         University university = new University(CreatedObjects.professor1, CreatedObjects.student1, CreatedObjects.student2,
@@ -39,8 +35,9 @@ public class Runner {
         university.removeStudent(CreatedObjects.student1);
         university.removeProfessor(CreatedObjects.professor2);
 
-        customLogger.print(Level.FINE, university.getProfessorsList());
-        customLogger.print(Level.FINE, university.getClassroom());
-        customLogger.print(Level.FINE, university.getSchoolCalendar());
+
+        log.info(university.getProfessorsList());
+        log.info(university.getClassroom());
+        log.info(university.getSchoolCalendar());
     }
 }

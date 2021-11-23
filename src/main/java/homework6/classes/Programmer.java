@@ -1,24 +1,21 @@
 package homework6.classes;
 
+import homework6.customLogger.MyLogger;
 import homework6.interfaces.IProgrammer;
 import homework6.exceptions.InvalidYearsOfExperience;
-import homework6.customLogger.CustomLogger;
 
-import java.io.File;
 import java.util.Objects;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Programmer extends Person implements IProgrammer{
     private int yearsOfExperience;
     private String favoriteLanguage;
     private String favoriteOS;
-    CustomLogger customLogger = new CustomLogger(Logger.GLOBAL_LOGGER_NAME);
-    File file = new File("src/homework6/Log.txt");
+    Logger log = new MyLogger(Programmer.class.getName()).getInitializedLogger();
 
     //Constructors
     public Programmer(){
-        customLogger.setupLogger(file);
+
     }
     public Programmer(String firstName, String lastName, String gender, int age, int yearsOfExperience, String favoriteLanguage, String favoriteOS) {
         super(firstName, lastName, gender, age);
@@ -43,6 +40,7 @@ public class Programmer extends Person implements IProgrammer{
     }
     public void setYearsOfExperience(int yearsOfExperience) throws InvalidYearsOfExperience {
         if(yearsOfExperience > 70){
+            log.severe(new InvalidYearsOfExperience().getMessage());
             throw new InvalidYearsOfExperience();
         }else {
             this.yearsOfExperience = yearsOfExperience;
@@ -66,7 +64,6 @@ public class Programmer extends Person implements IProgrammer{
         this.yearsOfExperience = yearsOfExperience;
         this.favoriteLanguage = favoriteLanguage;
         this.favoriteOS = favoriteOS;
-        customLogger.setupLogger(file);
     }
     public void changeInfo(String firstName, String lastName, int yearsOfExperience, String favoriteLanguage,
                            String favoriteOS){
@@ -77,7 +74,7 @@ public class Programmer extends Person implements IProgrammer{
             this.favoriteLanguage = favoriteLanguage;
             this.favoriteOS = favoriteOS;
         }catch (Exception e){
-            customLogger.print(Level.SEVERE,"Error in Programmer->ChangeInfo: "+e);
+            log.severe("Error in Programmer->ChangeInfo: "+e);
         }
 
     }
@@ -107,14 +104,14 @@ public class Programmer extends Person implements IProgrammer{
     //Overriding interface methods
     @Override
     public void sayProgrammerQuote() {
-        customLogger.print(Level.FINE,"Work smarter not harder!");
+        log.info("Work smarter not harder!");
     }
     @Override
     public void eat() {
-        customLogger.print(Level.FINE,"I like to eat vegetables!");
+        log.info("I like to eat vegetables!");
     }
     @Override
     public void drink() {
-        customLogger.print(Level.FINE,"I drink coffe!");
+        log.info("I drink coffe!");
     }
 }
