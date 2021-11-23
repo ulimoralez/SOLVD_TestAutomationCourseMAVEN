@@ -1,6 +1,6 @@
-package homework6.customLinkedList;
+package homework.customLinkedList;
 
-import homework6.classes.Person;
+import homework.classes.Person;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

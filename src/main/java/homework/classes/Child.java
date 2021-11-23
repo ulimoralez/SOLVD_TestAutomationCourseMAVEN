@@ -1,9 +1,8 @@
-package homework6.classes;
+package homework.classes;
 
-import homework6.customLogger.MyLogger;
-import homework6.exceptions.InvalidPersonAge;
+import homework.customLogger.MyLogger;
+import homework.exceptions.InvalidPersonAge;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public final class Child extends Person{

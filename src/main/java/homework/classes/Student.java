@@ -1,8 +1,8 @@
-package homework6.classes;
+package homework.classes;
 
-import homework6.customLogger.MyLogger;
-import homework6.interfaces.IStudent;
-import homework6.exceptions.TooMuchStudyHours;
+import homework.customLogger.MyLogger;
+import homework.interfaces.IStudent;
+import homework.exceptions.TooMuchStudyHours;
 
 import java.util.Objects;
 import java.util.logging.Logger;

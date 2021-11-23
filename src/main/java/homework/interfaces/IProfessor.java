@@ -1,4 +1,4 @@
-package homework6.interfaces;
+package homework.interfaces;
 
 public interface IProfessor {
     String name = "a";

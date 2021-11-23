@@ -1,4 +1,4 @@
-package homework6.customLinkedList;
+package homework.customLinkedList;
 
 public class Node<T> {
     T data;

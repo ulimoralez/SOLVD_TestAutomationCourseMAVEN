@@ -1,7 +1,7 @@
-package homework6.classes;
+package homework.classes;
 
-import homework6.customLogger.MyLogger;
-import homework6.interfaces.*;
+import homework.customLogger.MyLogger;
+import homework.interfaces.*;
 
 import java.util.ArrayList;
 import java.util.logging.Logger;

@@ -1,4 +1,4 @@
-package homework6.interfaces;
+package homework.interfaces;
 
 public interface IHuman {
     public void eat();

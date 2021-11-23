@@ -1,4 +1,4 @@
-package homework6.customLogger;
+package homework.customLogger;
 
 import java.io.File;
 import java.io.IOException;

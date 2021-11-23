@@ -1,8 +1,8 @@
-package homework6;
+package homework;
 
-import homework6.classes.University;
-import homework6.customLogger.MyLogger;
-import homework6.utils.CreatedObjects;
+import homework.classes.University;
+import homework.customLogger.MyLogger;
+import homework.utils.CreatedObjects;
 
 import java.util.Date;
 import java.util.logging.Logger;

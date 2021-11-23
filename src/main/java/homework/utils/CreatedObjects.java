@@ -1,6 +1,6 @@
-package homework6.utils;
+package homework.utils;
 
-import homework6.classes.*;
+import homework.classes.*;
 
 public class CreatedObjects {
     public static Child child1 = new Child();

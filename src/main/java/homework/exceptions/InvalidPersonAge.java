@@ -1,4 +1,4 @@
-package homework6.exceptions;
+package homework.exceptions;
 
 public class InvalidPersonAge extends RuntimeException {
     @Override

@@ -1,8 +1,8 @@
-package homework6.classes;
+package homework.classes;
 
-import homework6.customLogger.MyLogger;
-import homework6.interfaces.IProgrammer;
-import homework6.exceptions.InvalidYearsOfExperience;
+import homework.customLogger.MyLogger;
+import homework.interfaces.IProgrammer;
+import homework.exceptions.InvalidYearsOfExperience;
 
 import java.util.Objects;
 import java.util.logging.Logger;

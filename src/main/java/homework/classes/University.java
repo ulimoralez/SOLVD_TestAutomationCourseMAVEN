@@ -1,6 +1,6 @@
-package homework6.classes;
+package homework.classes;
 
-import homework6.customLogger.MyLogger;
+import homework.customLogger.MyLogger;
 
 import java.util.*;
 import java.util.logging.Logger;
