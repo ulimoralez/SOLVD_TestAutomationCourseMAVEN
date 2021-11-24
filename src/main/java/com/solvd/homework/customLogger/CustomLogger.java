@@ -4,12 +4,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.*;
 
-public class MyLogger{
+public class CustomLogger {
     private Logger logger;
     private final String logPath = "src/main/java/homework6/Log.txt";
     File logFile = new File(logPath);
 
-    public MyLogger(String classname){
+    public CustomLogger(String classname){
         try {
             SimpleFormatter sp = new SimpleFormatter();
             //We setup the logger with the classname

@@ -1,12 +1,12 @@
 package com.solvd.homework.classes;
 
-import com.solvd.homework.customLogger.MyLogger;
+import com.solvd.homework.customLogger.CustomLogger;
 
 import java.util.*;
 import java.util.logging.Logger;
 
 public class University {
-    Logger log = new MyLogger(University.class.getName()).getInitializedLogger();
+    Logger log = new CustomLogger(University.class.getName()).getInitializedLogger();
 
     //The unique way to create it it's in the constructor
     private LinkedHashSet classroom = new LinkedHashSet();

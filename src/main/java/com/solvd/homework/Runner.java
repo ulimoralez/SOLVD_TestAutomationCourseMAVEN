@@ -1,7 +1,7 @@
 package com.solvd.homework;
 
 import com.solvd.homework.classes.University;
-import com.solvd.homework.customLogger.MyLogger;
+import com.solvd.homework.customLogger.CustomLogger;
 import com.solvd.homework.utils.CreatedObjects;
 
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 public class Runner {
     public static void main(String[] args) {
-        Logger log = new MyLogger(Runner.class.getName()).getInitializedLogger();
+        Logger log = new CustomLogger(Runner.class.getName()).getInitializedLogger();
 
         //Using the class University wich has a LinkedHashSet - HashMap - TreeMap
         University university = new University(CreatedObjects.professor1, CreatedObjects.student1, CreatedObjects.student2,

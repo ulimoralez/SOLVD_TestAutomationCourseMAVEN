@@ -1,7 +1,7 @@
 package com.solvd.homework.classes;
 
 
-import com.solvd.homework.customLogger.MyLogger;
+import com.solvd.homework.customLogger.CustomLogger;
 import com.solvd.homework.exceptions.*;
 import com.solvd.homework.interfaces.*;
 
@@ -17,8 +17,8 @@ public class Person implements IPerson, IHuman {
     private String gender;
     private int age;
     static List<String> favouriteFood = new ArrayList<>();
-    Logger log = new MyLogger(Person.class.getName()).getInitializedLogger();
-    static Logger staticLogger = new MyLogger(Person.class.getName()).getInitializedLogger();
+    Logger log = new CustomLogger(Person.class.getName()).getInitializedLogger();
+    static Logger staticLogger = new CustomLogger(Person.class.getName()).getInitializedLogger();
 
     //Constructors
     public Person(){}
