@@ -47,4 +47,5 @@ public final class Child extends Person{
     public void drink() {
         log.info("I drink: "+FAVOURITE_DRINK);
     }
+
 }
