@@ -12,32 +12,41 @@ public class Runner {
         Logger log = new CustomLogger(Runner.class.getName()).getInitializedLogger();
 
         //Using the class University wich has a LinkedHashSet - HashMap - TreeMap
-        University university = new University(CreatedObjects.professor1, CreatedObjects.student1, CreatedObjects.student2,
-                CreatedObjects.student3, CreatedObjects.student4, CreatedObjects.student5);
+        University university = new University();
 
-        university.addClass(new Date(), CreatedObjects.professor1, "Basic Git");
-        university.addClass(new Date(), CreatedObjects.professor2, "Intermediate Git");
-        university.addClass(new Date(), CreatedObjects.professor3, "Advance Git");
-        university.addClass(new Date(), CreatedObjects.professor1, "Git workflows");
+        university.addProfessor(CreatedObjects.PROFESSOR1);
+        university.addProfessor(CreatedObjects.PROFESSOR2);
+        university.addProfessor(CreatedObjects.PROFESSOR3);
+        university.addStudent(CreatedObjects.STUDENT1);
+        university.addStudent(CreatedObjects.STUDENT2);
+        university.addStudent(CreatedObjects.STUDENT3);
+        university.addStudent(CreatedObjects.STUDENT4);
+        university.addStudent(CreatedObjects.STUDENT5);
 
-        university.addProfessor(CreatedObjects.professor1);
-        university.addProfessor(CreatedObjects.professor2);
-        university.addProfessor(CreatedObjects.professor3);
-        university.addProfessor(CreatedObjects.professor4);
-        university.addProfessor(CreatedObjects.professor5);
+        university.addClass(new Date(), CreatedObjects.PROFESSOR1, "Basic Git");
+        university.addClass(new Date(), CreatedObjects.PROFESSOR2, "Intermediate Git");
+        university.addClass(new Date(), CreatedObjects.PROFESSOR3, "Advance Git");
+        university.addClass(new Date(), CreatedObjects.PROFESSOR1, "Git workflows");
 
-        university.addStudent(CreatedObjects.student1);
-        university.addStudent(CreatedObjects.student2);
-        university.addStudent(CreatedObjects.student3);
-        university.addStudent(CreatedObjects.student4);
-        university.addStudent(CreatedObjects.student5);
+        university.addProfessor(CreatedObjects.PROFESSOR1);
+        university.addProfessor(CreatedObjects.PROFESSOR2);
+        university.addProfessor(CreatedObjects.PROFESSOR3);
+        university.addProfessor(CreatedObjects.PROFESSOR4);
+        university.addProfessor(CreatedObjects.PROFESSOR5);
 
-        university.removeStudent(CreatedObjects.student1);
-        university.removeProfessor(CreatedObjects.professor2);
+        university.addStudent(CreatedObjects.STUDENT1);
+        university.addStudent(CreatedObjects.STUDENT2);
+        university.addStudent(CreatedObjects.STUDENT3);
+        university.addStudent(CreatedObjects.STUDENT4);
+        university.addStudent(CreatedObjects.STUDENT5);
+
+        university.removeStudent(CreatedObjects.STUDENT1);
+        university.removeProfessor(CreatedObjects.PROFESSOR2);
 
 
-        log.info(university.getProfessorsList());
-        log.info(university.getClassroom());
-        log.info(university.getSchoolCalendar());
+        log.info("ProfessorsList: "+university.getProfessorsList());
+        log.info("ProfessorsList: "+university.getProfessorsList());
+        log.info("universityMembers: "+ university.getClassroom());
+        log.info("School Chalendar: "+ university.getSchoolCalendar());
     }
 }

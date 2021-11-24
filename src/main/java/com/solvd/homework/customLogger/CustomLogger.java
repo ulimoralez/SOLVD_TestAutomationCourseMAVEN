@@ -6,17 +6,14 @@ import java.util.logging.*;
 
 public class CustomLogger {
     private Logger logger;
-    private final String logPath = "src/main/java/homework6/Log.txt";
-    File logFile = new File(logPath);
-
+    private final String logPath = "src/main/java/com/solvd/homework/Log.txt";
+    private File logFile = new File(logPath);
     public CustomLogger(String classname){
         try {
             SimpleFormatter sp = new SimpleFormatter();
             //We setup the logger with the classname
             logger = Logger.getLogger(classname);
-            if(!logFile.exists()){
-                logFile.createNewFile();
-            }
+            if(!logFile.exists()) logFile.createNewFile();
             //We create the handlers
             FileHandler fh = new FileHandler(logPath, true);
             ConsoleHandler ch = new ConsoleHandler();

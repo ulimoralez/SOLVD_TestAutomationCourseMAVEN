@@ -1,5 +1,6 @@
 package com.solvd.homework.classes;
 
+import com.solvd.homework.customLinkedList.GenericLinkedList;
 import com.solvd.homework.customLogger.CustomLogger;
 
 import java.util.*;
@@ -9,42 +10,40 @@ public class University {
     Logger log = new CustomLogger(University.class.getName()).getInitializedLogger();
 
     //The unique way to create it it's in the constructor
-    private LinkedHashSet classroom = new LinkedHashSet();
-    //Key = professorId
-    private HashMap professorsList = new HashMap();
-    //Key = date
-    private TreeMap classDates = new TreeMap();
+    private HashSet<String> universityMembers = new HashSet();
+    //Key = professorId - Value = Proffesor firstname and lastname
+    private HashMap<Integer, String> professorsList = new HashMap();
+    //Ordered as inserted
+    private LinkedHashSet<String> classDates = new LinkedHashSet();
+
+    GenericLinkedList<String> careers = new GenericLinkedList<>();
 
     public University(){
 
     }
-    public University(Professor professor, Student student, Student student2, Student student3, Student student4,
-                      Student student5){
-        this.classroom.add(professor);
-        this.classroom.add(student);
-        this.classroom.add(student2);
-        this.classroom.add(student3);
-        this.classroom.add(student4);
-        this.classroom.add(student5);
-    }
 
     //Adders
-    public void addProfessor(Professor professor){
-        this.professorsList.put(professor.getId(), professor);
+    public void addProfessor(Professor... professor){
+        for (int i = 0; i < professor.length; i++){
+            this.universityMembers.add(professor[i].getFirstName()+" "+professor[i].getLastName());
+            professorsList.put(professor[i].getId(), professor[i].getFirstName()+" "+professor[i].getLastName());
+        }
     }
 
-    public void addStudent(Student student){
-        this.classroom.add(student);
+    public void addStudent(Student... student){
+        for (int i = 0; i < student.length; i++){
+            this.universityMembers.add(student[i].getFirstName()+" "+student[i].getLastName());
+        }
     }
 
     public void addClass(Date date, Professor professor, String theme){
-        classDates.put(date,
+        classDates.add(date+" "+
                 "\nProfessor "+professor.getFirstName()+" "+professor.getLastName()+" it's explainig: "+theme);
     }
 
     //Remove
     public void removeStudent(Student student){
-        this.classroom.remove(student);
+        this.universityMembers.remove(student);
     }
 
     public void removeProfessor(Professor professor){
@@ -52,15 +51,15 @@ public class University {
     }
 
     //Getters
-    public String getProfessorsList(){
-        return this.professorsList.toString();
+    public HashMap getProfessorsList(){
+        return this.professorsList;
     }
 
-    public String getSchoolCalendar(){
-        return this.classDates.toString();
+    public LinkedHashSet getSchoolCalendar(){
+        return this.classDates;
     }
 
-    public String getClassroom(){
-        return this.classroom.toString();
+    public HashSet getClassroom(){
+        return this.universityMembers;
     }
 }

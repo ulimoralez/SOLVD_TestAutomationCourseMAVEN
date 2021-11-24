@@ -1,11 +1,9 @@
 package com.solvd.homework.customLinkedList;
 
-import com.solvd.homework.classes.Person;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class GenericLinkedList<T> extends Person {
+public class GenericLinkedList<T>{
     private Logger logger = Logger.getLogger(GenericLinkedList.class.getName());
     private Node head;
 
