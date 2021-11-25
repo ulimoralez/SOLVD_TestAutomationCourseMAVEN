@@ -13,6 +13,10 @@ public class Runner {
 
         //Using the class University wich has a LinkedHashSet - HashMap - TreeMap
         University university = new University();
+        university.addCareer("Software Engineering");
+        university.addCareer("Machine Learning");
+        university.addCareer("Web Development");
+        university.addCareer("Software Development Engineer & Testing");
 
         university.addProfessor(CreatedObjects.PROFESSOR1);
         university.addProfessor(CreatedObjects.PROFESSOR2);
@@ -43,8 +47,6 @@ public class Runner {
         university.removeStudent(CreatedObjects.STUDENT1);
         university.removeProfessor(CreatedObjects.PROFESSOR2);
 
-
-        log.info("ProfessorsList: "+university.getProfessorsList());
         log.info("ProfessorsList: "+university.getProfessorsList());
         log.info("universityMembers: "+ university.getClassroom());
         log.info("School Chalendar: "+ university.getSchoolCalendar());

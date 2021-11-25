@@ -15,7 +15,7 @@ public class University {
     private HashMap<Integer, String> professorsList = new HashMap();
     //Ordered as inserted
     private LinkedHashSet<String> classDates = new LinkedHashSet();
-
+    //Careers that have the Uni
     GenericLinkedList<String> careers = new GenericLinkedList<>();
 
     public University(){
@@ -41,6 +41,10 @@ public class University {
                 "\nProfessor "+professor.getFirstName()+" "+professor.getLastName()+" it's explainig: "+theme);
     }
 
+    public void addCareer(String careerName){
+        this.careers.insert(careerName);
+    }
+
     //Remove
     public void removeStudent(Student student){
         this.universityMembers.remove(student);
@@ -61,5 +65,9 @@ public class University {
 
     public HashSet getClassroom(){
         return this.universityMembers;
+    }
+
+    public GenericLinkedList getCareers(){
+        return this.careers;
     }
 }
