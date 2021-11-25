@@ -9,17 +9,27 @@ import java.util.logging.Logger;
 public class University {
     Logger log = new CustomLogger(University.class.getName()).getInitializedLogger();
 
+    private String name;
+    private int yearOfFoundation;
+    private final int currentYear = new Date().getYear();
     //The unique way to create it it's in the constructor
     private HashSet<String> universityMembers = new HashSet();
     //Key = professorId - Value = Proffesor firstname and lastname
     private HashMap<Integer, String> professorsList = new HashMap();
+    //Have no order and can have duplicates
+    ArrayList<Student> studentsList = new ArrayList<>();
     //Ordered as inserted
     private LinkedHashSet<String> classDates = new LinkedHashSet();
     //Careers that have the Uni
     GenericLinkedList<String> careers = new GenericLinkedList<>();
 
-    public University(){
-
+    public University(String name, int yearOfFoundation){
+        this.name = name;
+            if (yearOfFoundation > 1000 || yearOfFoundation < currentYear){
+                this.yearOfFoundation = yearOfFoundation;
+            }else{
+                log.severe("Invalid date in year of foundation");
+            }
     }
 
     //Adders
@@ -33,6 +43,7 @@ public class University {
     public void addStudent(Student... student){
         for (int i = 0; i < student.length; i++){
             this.universityMembers.add(student[i].getFirstName()+" "+student[i].getLastName());
+            this.studentsList.add(student[i]);
         }
     }
 
@@ -63,11 +74,33 @@ public class University {
         return this.classDates;
     }
 
-    public HashSet getClassroom(){
-        return this.universityMembers;
+    public HashSet<String> getUniversityMembers() {
+        return universityMembers;
     }
 
     public GenericLinkedList getCareers(){
         return this.careers;
     }
+
+    //Methods
+    public boolean isProfessor(int professorid){
+        return professorsList.containsKey(professorid);
+    }
+
+    //Showing methods
+    public void showProfessorsList(){
+        for(Integer key : professorsList.keySet()){
+            log.info("IdProfessor: "+key+" - Name: "+professorsList.get(key));
+        }
+    }
+
+    /**
+     * Returns the total of Students, professors and careers
+     */
+    public void showUniversityData(){
+        log.info("The university called: "+this.name+" Founded at: "+this.yearOfFoundation+"\nHas a total of: "+(universityMembers.size()+1)+" members." +
+                "\n"+professorsList.size()+" are professors"+
+                "\n"+studentsList.size()+" are students");
+    }
+
 }
