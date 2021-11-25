@@ -1,2 +1,0 @@
-nov. 24, 2021 9:34:45 P.M. com.solvd.homework.Runner main
-GRAVE: ProfessorsList: {5555=Kippie Bread, 3333=Chopin Nigth, 1111=Ulises Moralez, 4444=Beeethoven Music, 2222=Mozart Ella}
