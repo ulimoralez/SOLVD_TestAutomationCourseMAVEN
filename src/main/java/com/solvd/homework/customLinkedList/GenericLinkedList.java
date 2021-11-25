@@ -1,10 +1,12 @@
 package com.solvd.homework.customLinkedList;
 
+import com.solvd.homework.customLogger.CustomLogger;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GenericLinkedList<T>{
-    private Logger logger = Logger.getLogger(GenericLinkedList.class.getName());
+    private Logger logger = new CustomLogger(GenericLinkedList.class.getName()).getInitializedLogger();
     private Node head;
 
     public void insert(T data) {
@@ -55,12 +57,11 @@ public class GenericLinkedList<T>{
     public void show() {
         Node currentNode = head;
         if(currentNode == null){
-            logger.log(Level.INFO, "Linked list is empty");
-            System.out.println("Linked list is empty");
+            logger.severe("Linked list is empty");
         }
         else {
             while(currentNode != null) {
-                logger.log(Level.INFO, currentNode.data + "; ");
+                logger.info(currentNode.data + "; ");
                 currentNode = currentNode.next;
             }
         }
