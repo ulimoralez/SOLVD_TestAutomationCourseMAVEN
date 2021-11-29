@@ -17,8 +17,8 @@ public class Person implements IPerson, IHuman {
     private String gender;
     private int age;
     static List<String> favouriteFood = new ArrayList<>();
-    private final Logger log = new CustomLogger(Person.class.getName()).getInitializedLogger();
-    private static final Logger staticLogger = new CustomLogger(Person.class.getName()).getInitializedLogger();
+    private final Logger LOGGER = new CustomLogger(Person.class.getName()).getInitializedLogger();
+    private static final Logger STATICLOGGER = new CustomLogger(Person.class.getName()).getInitializedLogger();
 
     //Constructors
     public Person(){}
@@ -63,7 +63,7 @@ public class Person implements IPerson, IHuman {
     }
     public void setAge(int age) {
         if(age > 130 || age < 0){
-            log.severe(new InvalidPersonAge().getMessage());
+            LOGGER.severe(new InvalidPersonAge().getMessage());
             throw new InvalidPersonAge();
         }else{
             this.age = age;
@@ -90,7 +90,7 @@ public class Person implements IPerson, IHuman {
     }
     public static void addFavouriteFood(String food){
         favouriteFood.add(food);
-        staticLogger.info(Arrays.toString(favouriteFood.toArray()));
+        STATICLOGGER.info(Arrays.toString(favouriteFood.toArray()));
     }
 
     //Overriding Object Methods
@@ -119,18 +119,18 @@ public class Person implements IPerson, IHuman {
     @Override
     public void sayHello(String firstName) {
         try {
-            log.info("Hello! My name is: "+firstName);
+            LOGGER.info("Hello! My name is: "+firstName);
         }catch (Exception e){
-            log.info("Error in Person->sayHello: "+e);
+            LOGGER.info("Error in Person->sayHello: "+e);
         }
 
     }
     @Override
     public void eat() {
-        log.info("I eat any type of food");
+        LOGGER.info("I eat any type of food");
     }
     @Override
     public void drink() {
-        log.info("I drink water");
+        LOGGER.info("I drink water");
     }
 }

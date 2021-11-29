@@ -12,7 +12,7 @@ public class Professor extends Person implements IProfessor {
     private String collegeName;
     private int id;
     private ArrayList<Integer> professorIDs = new ArrayList<>();
-    private static final Logger log = new CustomLogger(Professor.class.getName()).getInitializedLogger();
+    private static final Logger LOGGER = new CustomLogger(Professor.class.getName()).getInitializedLogger();
 
     public Professor(String firstName, String lastName, String studyArea, String collegeName, int professorID) {
         this(firstName, lastName, studyArea);
@@ -47,15 +47,15 @@ public class Professor extends Person implements IProfessor {
     @Override
     public void sayHello(String firstName) {
         try {
-            log.info("Hello! My name is: "+firstName);
+            LOGGER.info("Hello! My name is: "+firstName);
         }catch (Exception e){
-            log.info("Error in Professor->sayHello: "+e);
+            LOGGER.info("Error in Professor->sayHello: "+e);
         }
     }
 
     @Override
     public void drink() {
-        log.info("I like to drink tea");
+        LOGGER.info("I like to drink tea");
     }
     @Override
     public String themeToTeach() {

@@ -7,7 +7,7 @@ import java.util.*;
 import java.util.logging.Logger;
 
 public class University {
-    private static final Logger log = new CustomLogger(University.class.getName()).getInitializedLogger();
+    private static final Logger LOGGER = new CustomLogger(University.class.getName()).getInitializedLogger();
 
     private String name;
     private int yearOfFoundation;
@@ -28,7 +28,7 @@ public class University {
             if (yearOfFoundation > 1000 || yearOfFoundation < currentYear){
                 this.yearOfFoundation = yearOfFoundation;
             }else{
-                log.severe("Invalid date in year of foundation");
+                LOGGER.severe("Invalid date in year of foundation");
             }
     }
 
@@ -90,7 +90,7 @@ public class University {
     //Showing methods
     public void showProfessorsList(){
         for(Integer key : professorsList.keySet()){
-            log.info("IdProfessor: "+key+" - Name: "+professorsList.get(key));
+            LOGGER.info("IdProfessor: "+key+" - Name: "+professorsList.get(key));
         }
     }
 
@@ -98,7 +98,7 @@ public class University {
      * Returns the total of Students, professors and careers
      */
     public void showUniversityData(){
-        log.info("The university called: "+this.name+" Founded at: "+this.yearOfFoundation+"\nHas a total of: "+(universityMembers.size()+1)+" members." +
+        LOGGER.info("The university called: "+this.name+" Founded at: "+this.yearOfFoundation+"\nHas a total of: "+(universityMembers.size()+1)+" members." +
                 "\n"+professorsList.size()+" are professors"+
                 "\n"+studentsList.size()+" are students");
     }

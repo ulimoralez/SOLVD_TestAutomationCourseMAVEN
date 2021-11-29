@@ -5,7 +5,7 @@ import com.solvd.homework.customlogger.CustomLogger;
 import java.util.logging.Logger;
 
 public class GenericLinkedList<T>{
-    private static final Logger logger = new CustomLogger(GenericLinkedList.class.getName()).getInitializedLogger();
+    private static final Logger LOGGER = new CustomLogger(GenericLinkedList.class.getName()).getInitializedLogger();
     private Node head;
 
     public void insert(T data) {
@@ -56,11 +56,11 @@ public class GenericLinkedList<T>{
     public void show() {
         Node currentNode = head;
         if(currentNode == null){
-            logger.severe("Linked list is empty");
+            LOGGER.severe("Linked list is empty");
         }
         else {
             while(currentNode != null) {
-                logger.info(currentNode.data + "; ");
+                LOGGER.info(currentNode.data + "; ");
                 currentNode = currentNode.next;
             }
         }

@@ -11,7 +11,7 @@ public class Programmer extends Person implements IProgrammer{
     private int yearsOfExperience;
     private String favoriteLanguage;
     private String favoriteOS;
-    private static final Logger log = new CustomLogger(Programmer.class.getName()).getInitializedLogger();
+    private static final Logger LOGGER = new CustomLogger(Programmer.class.getName()).getInitializedLogger();
 
     //Constructors
     public Programmer(){
@@ -40,7 +40,7 @@ public class Programmer extends Person implements IProgrammer{
     }
     public void setYearsOfExperience(int yearsOfExperience) throws InvalidYearsOfExperience {
         if(yearsOfExperience > 70){
-            log.severe(new InvalidYearsOfExperience().getMessage());
+            LOGGER.severe(new InvalidYearsOfExperience().getMessage());
             throw new InvalidYearsOfExperience();
         }else {
             this.yearsOfExperience = yearsOfExperience;
@@ -74,7 +74,7 @@ public class Programmer extends Person implements IProgrammer{
             this.favoriteLanguage = favoriteLanguage;
             this.favoriteOS = favoriteOS;
         }catch (Exception e){
-            log.severe("Error in Programmer->ChangeInfo: "+e);
+            LOGGER.severe("Error in Programmer->ChangeInfo: "+e);
         }
 
     }
@@ -104,14 +104,14 @@ public class Programmer extends Person implements IProgrammer{
     //Overriding interface methods
     @Override
     public void sayProgrammerQuote() {
-        log.info("Work smarter not harder!");
+        LOGGER.info("Work smarter not harder!");
     }
     @Override
     public void eat() {
-        log.info("I like to eat vegetables!");
+        LOGGER.info("I like to eat vegetables!");
     }
     @Override
     public void drink() {
-        log.info("I drink coffe!");
+        LOGGER.info("I drink coffe!");
     }
 }

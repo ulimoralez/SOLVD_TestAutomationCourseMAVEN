@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 public class Student extends Person implements IStudent{
     private String collegeName;
     private String careerName;
-    private static final Logger log = new CustomLogger(Student.class.getName()).getInitializedLogger();
+    private static final Logger LOGGER = new CustomLogger(Student.class.getName()).getInitializedLogger();
 
     //Constructors
     public Student(){
@@ -51,7 +51,7 @@ public class Student extends Person implements IStudent{
             if(hours > 15){
                 throw new TooMuchStudyHours();
             }else{
-                log.info("Sounds great! Keep on it!");
+                LOGGER.info("Sounds great! Keep on it!");
             }
         }
     }
@@ -84,10 +84,10 @@ public class Student extends Person implements IStudent{
     }
     @Override
     public void eat() {
-        log.info("I eat when I'm not sleeping");
+        LOGGER.info("I eat when I'm not sleeping");
     }
     @Override
     public void drink() {
-        log.info("I love drink coffee");
+        LOGGER.info("I love drink coffee");
     }
 }

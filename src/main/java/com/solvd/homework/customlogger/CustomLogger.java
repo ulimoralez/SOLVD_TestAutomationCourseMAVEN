@@ -6,8 +6,8 @@ import java.util.logging.*;
 
 public class CustomLogger {
     private Logger logger;
-    private final String logPath = "src/main/java/com/solvd/homework/Log.txt";
-    private File logFile = new File(logPath);
+    private final String LOGPATH = "src/main/java/com/solvd/homework/Log.txt";
+    private File logFile = new File(LOGPATH);
     public CustomLogger(String classname){
         try {
             SimpleFormatter sp = new SimpleFormatter();
@@ -15,7 +15,7 @@ public class CustomLogger {
             logger = Logger.getLogger(classname);
             if(!logFile.exists()) logFile.createNewFile();
             //We create the handlers
-            FileHandler fh = new FileHandler(logPath, true);
+            FileHandler fh = new FileHandler(LOGPATH, true);
             ConsoleHandler ch = new ConsoleHandler();
 
             //Set the formatter
