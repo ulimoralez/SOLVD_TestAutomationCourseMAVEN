@@ -1,14 +1,14 @@
 package com.solvd.homework.classes;
 
-import com.solvd.homework.customLogger.CustomLogger;
+import com.solvd.homework.customlogger.CustomLogger;
 import com.solvd.homework.exceptions.InvalidPersonAge;
 
 import java.util.logging.Logger;
 
 public final class Child extends Person{
 
-    Logger log = new CustomLogger(Child.class.getName()).getInitializedLogger();
-    static Logger staticLogger = new CustomLogger(Child.class.getName()).getInitializedLogger();
+    private static Logger log = new CustomLogger(Child.class.getName()).getInitializedLogger();
+    private static Logger staticLogger = new CustomLogger(Child.class.getName()).getInitializedLogger();
     static{
         final int childAge = 7;
         String favouriteFood = "Pizza";

@@ -1,13 +1,13 @@
 package com.solvd.homework.classes;
 
-import com.solvd.homework.customLinkedList.GenericLinkedList;
-import com.solvd.homework.customLogger.CustomLogger;
+import com.solvd.homework.customlinkedlist.GenericLinkedList;
+import com.solvd.homework.customlogger.CustomLogger;
 
 import java.util.*;
 import java.util.logging.Logger;
 
 public class University {
-    Logger log = new CustomLogger(University.class.getName()).getInitializedLogger();
+    private static final Logger log = new CustomLogger(University.class.getName()).getInitializedLogger();
 
     private String name;
     private int yearOfFoundation;
@@ -21,7 +21,7 @@ public class University {
     //Ordered as inserted
     private LinkedHashSet<String> classDates = new LinkedHashSet();
     //Careers that have the Uni
-    GenericLinkedList<String> careers = new GenericLinkedList<>();
+    private GenericLinkedList<String> careers = new GenericLinkedList<>();
 
     public University(String name, int yearOfFoundation){
         this.name = name;

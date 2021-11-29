@@ -1,7 +1,7 @@
 package com.solvd.homework;
 
 import com.solvd.homework.classes.University;
-import com.solvd.homework.customLogger.CustomLogger;
+import com.solvd.homework.customlogger.CustomLogger;
 import com.solvd.homework.utils.CreatedObjects;
 
 import java.util.Date;

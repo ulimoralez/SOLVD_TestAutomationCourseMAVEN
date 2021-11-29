@@ -1,12 +1,11 @@
-package com.solvd.homework.customLinkedList;
+package com.solvd.homework.customlinkedlist;
 
-import com.solvd.homework.customLogger.CustomLogger;
+import com.solvd.homework.customlogger.CustomLogger;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GenericLinkedList<T>{
-    private Logger logger = new CustomLogger(GenericLinkedList.class.getName()).getInitializedLogger();
+    private static final Logger logger = new CustomLogger(GenericLinkedList.class.getName()).getInitializedLogger();
     private Node head;
 
     public void insert(T data) {

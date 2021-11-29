@@ -1,4 +1,4 @@
-package com.solvd.homework.customLinkedList;
+package com.solvd.homework.customlinkedlist;
 
 public class Node<T> {
     T data;

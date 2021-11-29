@@ -1,4 +1,4 @@
-package com.solvd.homework.customLogger;
+package com.solvd.homework.customlogger;
 
 import java.io.File;
 import java.io.IOException;

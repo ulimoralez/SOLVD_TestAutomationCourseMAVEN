@@ -1,6 +1,6 @@
 package com.solvd.homework.classes;
 
-import com.solvd.homework.customLogger.CustomLogger;
+import com.solvd.homework.customlogger.CustomLogger;
 import com.solvd.homework.interfaces.IStudent;
 import com.solvd.homework.exceptions.TooMuchStudyHours;
 
@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 public class Student extends Person implements IStudent{
     private String collegeName;
     private String careerName;
-    Logger log = new CustomLogger(Student.class.getName()).getInitializedLogger();
+    private static final Logger log = new CustomLogger(Student.class.getName()).getInitializedLogger();
 
     //Constructors
     public Student(){
