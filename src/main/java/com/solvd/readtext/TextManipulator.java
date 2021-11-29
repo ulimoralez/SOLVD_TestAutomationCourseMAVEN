@@ -7,26 +7,29 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Logger;
 
 public class TextManipulator {
     public static void main(String[] args) {
-        File file = new File("src/main/java/com/solvd/readtext/AlanTuringWikipedia.txt");
+        final File FILE = new File("src/main/java/com/solvd/readtext/AlanTuringWikipedia.txt");
         Logger LOGGER = Logger.getLogger(TextManipulator.class.getName());
         String wordCounter;
-        String fileContent = readLinesFromFile(file.getPath());
+        String fileContent = readLinesFromFile(FILE.getPath());
 
         LOGGER.info("Original content"+fileContent);
 
-        wordCounter = String.valueOf(StringUtils.split(fileContent, " ").length);
+        HashSet<String> uniqueWords = new HashSet<>(Arrays.asList(fileContent.split(" ")));
 
         try {
-            FileUtils.writeStringToFile(file, fileContent + wordCounter, StandardCharsets.UTF_8);
+            LOGGER.info("Unique words in the text: "+uniqueWords.size());
+            FileUtils.writeStringToFile(FILE, fileContent + uniqueWords.size(), StandardCharsets.UTF_8);
         }catch (IOException e){
             e.printStackTrace();
         }
-        fileContent = readLinesFromFile(file.getPath());
+        fileContent = readLinesFromFile(FILE.getPath());
         //Task 2
         //StringUtils methods
         LOGGER.severe("\nReverse content: "+StringUtils.reverse(fileContent));
@@ -39,11 +42,11 @@ public class TextManipulator {
         File copyText = new File("src/main/java/com/solvd/readtext/copytext.txt");
         File newPackage = new File("src/main/java/com/solvd/readtext/newpackage");
         try {
-            FileUtils.copyFile(file, copyText);
+            FileUtils.copyFile(FILE, copyText);
             FileUtils.forceMkdir(newPackage);
             FileUtils.lastModified(copyText);
             LOGGER.info(""+FileUtils.getUserDirectoryPath());
-            LOGGER.info(""+FileUtils.sizeOf(file));
+            LOGGER.info(""+FileUtils.sizeOf(FILE));
         } catch (IOException e) {
             e.printStackTrace();
         }
