@@ -2,7 +2,6 @@ package com.solvd.readtext;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,15 +17,15 @@ public class TextManipulator {
         String wordCounter;
         String fileContent = readLinesFromFile(file.getPath());
 
-        System.out.println("Original content"+fileContent);
+        LOGGER.info("Original content"+fileContent);
 
         wordCounter = String.valueOf(StringUtils.split(fileContent, " ").length);
 
-        //try {
-        //    FileUtils.writeStringToFile(file, fileContent + wordCounter, StandardCharsets.UTF_8);
-        //}catch (IOException e){
-        //    e.printStackTrace();
-        //}
+        try {
+            FileUtils.writeStringToFile(file, fileContent + wordCounter, StandardCharsets.UTF_8);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
         fileContent = readLinesFromFile(file.getPath());
         //Task 2
         //StringUtils methods
@@ -43,8 +42,8 @@ public class TextManipulator {
             FileUtils.copyFile(file, copyText);
             FileUtils.forceMkdir(newPackage);
             FileUtils.lastModified(copyText);
-            System.out.println(FileUtils.getUserDirectoryPath());
-            System.out.println(FileUtils.sizeOf(file));
+            LOGGER.info(""+FileUtils.getUserDirectoryPath());
+            LOGGER.info(""+FileUtils.sizeOf(file));
         } catch (IOException e) {
             e.printStackTrace();
         }
