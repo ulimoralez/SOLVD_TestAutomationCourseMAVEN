@@ -1,6 +1,5 @@
 package com.solvd.homework.classes;
 
-import com.solvd.homework.customlogger.CustomLogger;
 import com.solvd.homework.interfaces.IProgrammer;
 import com.solvd.homework.exceptions.InvalidYearsOfExperience;
 
@@ -11,7 +10,7 @@ public class Programmer extends Person implements IProgrammer{
     private int yearsOfExperience;
     private String favoriteLanguage;
     private String favoriteOS;
-    private static final Logger LOGGER = new CustomLogger(Programmer.class.getName()).getInitializedLogger();
+    private static final Logger LOGGER = Logger.getLogger(Programmer.class.getName());
 
     //Constructors
     public Programmer(){

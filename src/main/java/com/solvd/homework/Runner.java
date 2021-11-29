@@ -1,7 +1,6 @@
 package com.solvd.homework;
 
 import com.solvd.homework.classes.University;
-import com.solvd.homework.customlogger.CustomLogger;
 import com.solvd.homework.utils.CreatedObjects;
 
 import java.util.Date;
@@ -9,7 +8,8 @@ import java.util.logging.Logger;
 
 public class Runner {
     public static void main(String[] args) {
-        Logger log = new CustomLogger(Runner.class.getName()).getInitializedLogger();
+
+        Logger LOGGER = Logger.getLogger(Runner.class.getName());
 
         //Using the class University wich has a LinkedHashSet - HashMap - TreeMap
         University university = new University("University of SOLVD.inc", 2020);
@@ -37,11 +37,11 @@ public class Runner {
         university.removeStudent(CreatedObjects.STUDENT1);
         university.removeProfessor(CreatedObjects.PROFESSOR2);
 
-        log.info("ProfessorsList: "+university.getProfessorsList());
-        log.info("universityMembers: "+ university.getUniversityMembers());
-        log.info("School Chalendar: "+ university.getSchoolCalendar());
-        log.info("University careers: "+ university.getCareers());
-        log.info("Is professor the id 1010? "+ university.isProfessor(1010));
+        LOGGER.info("ProfessorsList: "+university.getProfessorsList());
+        LOGGER.info("universityMembers: "+ university.getUniversityMembers());
+        LOGGER.info("School Chalendar: "+ university.getSchoolCalendar());
+        LOGGER.info("University careers: "+ university.getCareers());
+        LOGGER.info("Is professor the id 1010? "+ university.isProfessor(1010));
         university.getCareers().show();
         university.showProfessorsList();
         university.showUniversityData();

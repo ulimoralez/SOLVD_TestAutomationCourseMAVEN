@@ -1,13 +1,12 @@
 package com.solvd.homework.classes;
 
 import com.solvd.homework.customlinkedlist.GenericLinkedList;
-import com.solvd.homework.customlogger.CustomLogger;
 
 import java.util.*;
 import java.util.logging.Logger;
 
 public class University {
-    private static final Logger LOGGER = new CustomLogger(University.class.getName()).getInitializedLogger();
+    private static final Logger LOGGER = Logger.getLogger(University.class.getName());
 
     private String name;
     private int yearOfFoundation;

@@ -1,6 +1,5 @@
 package com.solvd.homework.classes;
 
-import com.solvd.homework.customlogger.CustomLogger;
 import com.solvd.homework.interfaces.*;
 
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ public class Professor extends Person implements IProfessor {
     private String collegeName;
     private int id;
     private ArrayList<Integer> professorIDs = new ArrayList<>();
-    private static final Logger LOGGER = new CustomLogger(Professor.class.getName()).getInitializedLogger();
+    private static final Logger LOGGER = Logger.getLogger(Professor.class.getName());
 
     public Professor(String firstName, String lastName, String studyArea, String collegeName, int professorID) {
         this(firstName, lastName, studyArea);
