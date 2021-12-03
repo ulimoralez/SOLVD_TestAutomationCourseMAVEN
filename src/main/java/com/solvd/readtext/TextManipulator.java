@@ -14,7 +14,8 @@ import java.util.logging.Logger;
 
 public class TextManipulator {
     public static void main(String[] args) {
-        final File FILE = new File("src/main/java/com/solvd/readtext/AlanTuringWikipedia.txt");
+        final File FILE = new File("src/main/resources/readtext/AlanTuringWikipedia.txt");
+        final File WORDCOUNTERFILE = new File("src/main/resources/readtext/wordCounter.txt");
         Logger LOGGER = Logger.getLogger(TextManipulator.class.getName());
         String wordCounter;
         String fileContent = readLinesFromFile(FILE.getPath());
@@ -25,11 +26,13 @@ public class TextManipulator {
 
         try {
             LOGGER.info("Unique words in the text: "+uniqueWords.size());
-            FileUtils.writeStringToFile(FILE, fileContent + uniqueWords.size(), StandardCharsets.UTF_8);
+            FileUtils.writeStringToFile(WORDCOUNTERFILE, "Words in "+FILE.getName()+": "+uniqueWords.size(),
+                    StandardCharsets.UTF_8);
         }catch (IOException e){
             e.printStackTrace();
         }
         fileContent = readLinesFromFile(FILE.getPath());
+
         //Task 2
         //StringUtils methods
         LOGGER.severe("\nReverse content: "+StringUtils.reverse(fileContent));
@@ -39,11 +42,10 @@ public class TextManipulator {
         LOGGER.info("\nUppercase content: "+ StringUtils.upperCase(fileContent));
 
         //FileUtils Methods
-        File copyText = new File("src/main/java/com/solvd/readtext/copytext.txt");
-        File newPackage = new File("src/main/java/com/solvd/readtext/newpackage");
+        File copyText = new File("src/main/resources/readtext/copytext.txt");
         try {
             FileUtils.copyFile(FILE, copyText);
-            FileUtils.forceMkdir(newPackage);
+            FileUtils.forceMkdir(new File("src/main/resources/readtext"));
             FileUtils.lastModified(copyText);
             LOGGER.info(""+FileUtils.getUserDirectoryPath());
             LOGGER.info(""+FileUtils.sizeOf(FILE));
