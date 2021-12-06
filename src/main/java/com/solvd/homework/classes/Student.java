@@ -1,5 +1,6 @@
 package com.solvd.homework.classes;
 
+import com.solvd.homework.enums.StudyTopic;
 import com.solvd.homework.interfaces.IStudent;
 import com.solvd.homework.exceptions.TooMuchStudyHours;
 
@@ -43,14 +44,14 @@ public class Student extends Person implements IStudent{
         this.collegeName = collegeName;
         this.careerName = careerName;
     }
-    public void studyHoursInADay(int hours) throws TooMuchStudyHours {
+    public void studyHoursInADay(int hours, String studyTopic) throws TooMuchStudyHours {
         if(hours > 24){
             throw new ArithmeticException("This is impossible, a day only have 24 hours");
         }else{
             if(hours > 15){
                 throw new TooMuchStudyHours();
             }else{
-                LOGGER.info("Sounds great! Keep on it!");
+                LOGGER.info("Sounds great! Tell me more about "+studyTopic);
             }
         }
     }

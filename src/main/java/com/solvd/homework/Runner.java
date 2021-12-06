@@ -1,6 +1,8 @@
 package com.solvd.homework;
 
 import com.solvd.homework.classes.University;
+import com.solvd.homework.enums.StudyTopic;
+import com.solvd.homework.exceptions.TooMuchStudyHours;
 import com.solvd.homework.utils.CreatedObjects;
 
 import java.util.Date;
@@ -45,5 +47,11 @@ public class Runner {
         university.getCareers().show();
         university.showProfessorsList();
         university.showUniversityData();
+
+        try {
+            CreatedObjects.STUDENT1.studyHoursInADay(2, StudyTopic.PROGRAMMING.name());
+        } catch (TooMuchStudyHours e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.solvd.homework.classes;
 
+import com.solvd.homework.enums.Book;
 import com.solvd.homework.interfaces.*;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class Professor extends Person implements IProfessor {
     private String collegeName;
     private int id;
     private ArrayList<Integer> professorIDs = new ArrayList<>();
+    private String favouriteBook;
     private static final Logger LOGGER = Logger.getLogger(Professor.class.getName());
 
     public Professor(String firstName, String lastName, String studyArea, String collegeName, int professorID) {
@@ -19,12 +21,13 @@ public class Professor extends Person implements IProfessor {
         this.id = professorID;
     }
     public Professor(String firstName, String lastName, String gender, int age, String studyArea, String collegeName,
-                     int professorID                ) {
+                     int professorID, String favouriteBook) {
         this(firstName, lastName, studyArea);
         super.setAge(age);
         super.setGender(gender);
         this.collegeName = collegeName;
         this.id = professorID;
+        this.favouriteBook = favouriteBook;
     }
     public Professor(String firstName, String lastName, String studyArea) {
         super(firstName, lastName);

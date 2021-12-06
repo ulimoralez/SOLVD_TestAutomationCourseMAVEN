@@ -1,6 +1,9 @@
 package com.solvd.homework.utils;
 
 import com.solvd.homework.classes.*;
+import com.solvd.homework.enums.Book;
+import com.solvd.homework.enums.OperativeSystem;
+import com.solvd.homework.enums.ProgrammingLanguage;
 
 public final class CreatedObjects {
     public static final Child CHILD1 = new Child();
@@ -20,12 +23,21 @@ public final class CreatedObjects {
     public static final Professor PROFESSOR3 = new Professor("Chopin","Nigth", "Data Science", "UTN", 3333);
     public static final Professor PROFESSOR4 = new Professor("Beeethoven","Music", "Biology", "UNNE", 4444);
     public static final Professor PROFESSOR5 = new Professor("Kippie","Bread", "UTN", "Programming", 5555);
+    public static final Professor PROFESSOR6 = new Professor("Monika", "Ellum", "Female", 32, "Physics", "UTN",
+            123123, Book.PROGRAMMING.getName());
+    public static final Professor PROFESSOR7 = new Professor("Kippie", "Moralez", "Male", 34, "Physics", "UTN",
+            124123, Book.PHYSICS.getName());
 
-    public static final Programmer PROGRAMMER1 = new Programmer("Monika", "Townby","Polygender",3, "JavaScript", "Windows");
-    public static final Programmer PROGRAMMER2 = new Programmer("Duffy", "Ellum","Genderfluid",3, "JavaScript", "Windows");
-    public static final Programmer PROGRAMMER3 = new Programmer("Devlen", "Coppock","Male",3, "JavaScript", "Windows");
-    public static final Programmer PROGRAMMER4 = new Programmer("Ripley", "Libero","Agender",3, "JavaScript", "Windows");
-    public static final Programmer PROGRAMMER5 = new Programmer("Demetra", "Parlatt","Male",3, "JavaScript", "Windows");
+    public static final Programmer PROGRAMMER1 = new Programmer("Monika", "Townby","Polygender",3,
+            ProgrammingLanguage.C.name(), OperativeSystem.LINUX.name());
+    public static final Programmer PROGRAMMER2 = new Programmer("Duffy", "Ellum","Genderfluid",3,
+            ProgrammingLanguage.JAVASCRIPT.name(), OperativeSystem.WINDOWS.name());
+    public static final Programmer PROGRAMMER3 = new Programmer("Devlen", "Coppock","Male",3,
+            ProgrammingLanguage.JAVA.name(), OperativeSystem.MAC.name());
+    public static final Programmer PROGRAMMER4 = new Programmer("Ripley", "Libero","Agender",3,
+            ProgrammingLanguage.TYPESCRIPT.name(), OperativeSystem.WINDOWS.name());
+    public static final Programmer PROGRAMMER5 = new Programmer("Demetra", "Parlatt","Male",3,
+            ProgrammingLanguage.CSHARP.name(), OperativeSystem.WINDOWS.name());
 
     public static final Student STUDENT1 = new Student("Ulises","Moralez", "UTN", "Programming");
     public static final Student STUDENT2 = new Student("Stuart","Little", "UTN", "Programming");

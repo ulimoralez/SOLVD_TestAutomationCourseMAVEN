@@ -1,13 +1,15 @@
 package com.solvd.homework.classes;
 
+import com.solvd.homework.enums.Pets;
 import com.solvd.homework.exceptions.InvalidPersonAge;
 
 import java.util.logging.Logger;
 
 public final class Child extends Person{
 
-    private static Logger log = Logger.getLogger(Child.class.getName());
+    private Logger log = Logger.getLogger(Child.class.getName());
     private static Logger staticLogger = Logger.getLogger(Child.class.getName());
+    private Pets favouritePet = Pets.CAT;
     static{
         final int childAge = 7;
         String favouriteFood = "Pizza";
@@ -47,4 +49,7 @@ public final class Child extends Person{
         log.info("I drink: "+FAVOURITE_DRINK);
     }
 
+    public void favouritePet(){
+        log.fine("My favourite pet is: "+favouritePet);
+    }
 }
