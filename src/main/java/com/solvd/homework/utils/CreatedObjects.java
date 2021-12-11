@@ -36,12 +36,17 @@ public final class CreatedObjects {
             ProgrammingLanguage.JAVA.name(), OperativeSystem.MAC.name());
     public static final Programmer PROGRAMMER4 = new Programmer("Ripley", "Libero","Agender",3,
             ProgrammingLanguage.TYPESCRIPT.name(), OperativeSystem.WINDOWS.name());
-    public static final Programmer PROGRAMMER5 = new Programmer("Demetra", "Parlatt","Male",3,
+    public static final Programmer PROGRAMMER5 = new Programmer("Demetra", "Parlatt","Sky",3,
             ProgrammingLanguage.CSHARP.name(), OperativeSystem.WINDOWS.name());
 
-    public static final Student STUDENT1 = new Student("Ulises","Moralez", "UTN", "Programming");
-    public static final Student STUDENT2 = new Student("Stuart","Little", "UTN", "Programming");
-    public static final Student STUDENT3 = new Student("Pancha","Sky", "UTN", "Programming");
-    public static final Student STUDENT4 = new Student("Iron","Man", "UTN", "Programming");
-    public static final Student STUDENT5 = new Student("Vinnie","Willshere", "UTN", "Programming");
+    public static final Student STUDENT1 = new Student("Stuart", "Sky", "Male", 25, "UTN",
+            "TUP");
+    public static final Student STUDENT2 = new Student("Ruthe", "Dockwray", "Male", 23, "UTN",
+            "TUP");
+    public static final Student STUDENT3 = new Student("Yoshiko", "Godfrey", "Bigender", 20, "UTN",
+            "TUP");
+    public static final Student STUDENT4 = new Student("Eugenie", "Arnatt", "Female", 27, "UTN",
+            "TUP");
+    public static final Student STUDENT5 = new Student("Vasilis", "Hackin", "Polygender", 25, "UTN",
+            "TUP");
 }

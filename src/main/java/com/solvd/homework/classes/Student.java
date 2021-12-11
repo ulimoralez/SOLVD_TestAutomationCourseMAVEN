@@ -1,6 +1,6 @@
 package com.solvd.homework.classes;
 
-import com.solvd.homework.enums.StudyTopic;
+import com.solvd.homework.functionalInterfaces.IStudentProcessor;
 import com.solvd.homework.interfaces.IStudent;
 import com.solvd.homework.exceptions.TooMuchStudyHours;
 
@@ -31,6 +31,22 @@ public class Student extends Person implements IStudent{
     public Student(String firstName, String lastName, String collegeName, String careerName) {
         super(firstName, lastName);
         changeInfo(collegeName, careerName);
+    }
+
+    public String getCollegeName() {
+        return collegeName;
+    }
+
+    public void setCollegeName(String collegeName) {
+        this.collegeName = collegeName;
+    }
+
+    public String getCareerName() {
+        return careerName;
+    }
+
+    public void setCareerName(String careerName) {
+        this.careerName = careerName;
     }
 
     //Methods and Functions
@@ -89,5 +105,19 @@ public class Student extends Person implements IStudent{
     @Override
     public void drink() {
         LOGGER.info("I love drink coffee");
+    }
+
+    //Lambdas
+    public static void CheckCollege(Student student, String collegeName){
+        IStudentProcessor processor = (Ostudent, OcollegeName) -> {
+            if (Ostudent.collegeName == collegeName) {
+                LOGGER.fine("The student: " + Ostudent.getFirstName() + " " + Ostudent.getLastName() + " has the same " +
+                        "college name than the University.");
+            } else {
+                LOGGER.severe("The student: " + Ostudent.getFirstName() + " " + Ostudent.getLastName() + " has not the same " +
+                        "college name than the University :( .");
+            }
+        };
+        processor.checkCollege(student, collegeName);
     }
 }

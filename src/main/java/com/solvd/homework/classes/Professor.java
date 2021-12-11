@@ -38,6 +38,10 @@ public class Professor extends Person implements IProfessor {
         return this.id;
     }
 
+    public String getFavouriteBook() {
+        return favouriteBook;
+    }
+
     //Overriding interface and super class methods
     public void changeId(int professorId){
         for (int i = 0; i < professorIDs.size(); i++) {

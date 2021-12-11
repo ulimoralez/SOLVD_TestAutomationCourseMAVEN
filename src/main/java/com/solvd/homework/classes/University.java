@@ -3,6 +3,8 @@ package com.solvd.homework.classes;
 import com.solvd.homework.customlinkedlist.GenericLinkedList;
 
 import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.logging.Logger;
 
 public class University {
@@ -21,6 +23,7 @@ public class University {
     private LinkedHashSet<String> classDates = new LinkedHashSet();
     //Careers that have the Uni
     private GenericLinkedList<String> careers = new GenericLinkedList<>();
+    private int averageAgeOfStudents = 0;
 
     public University(String name, int yearOfFoundation){
         this.name = name;
@@ -81,9 +84,57 @@ public class University {
         return this.careers;
     }
 
+    public String getName() {
+        return name;
+    }
+
     //Methods
     public boolean isProfessor(int professorid){
         return professorsList.containsKey(professorid);
+    }
+
+    public static void checkStudents(University university){
+        university.studentsList.forEach(student -> {
+            Student.CheckCollege(student, university.name);
+        });
+    }
+
+    public void changeUniversityName(String newName){
+        this.name = newName;
+        this.studentsList.forEach(student -> {
+            student.setCollegeName(newName);
+        });
+    }
+
+    //Foreach implements a Consumer function, I think it applies to the task
+    public void changeCareerName(String newCareerName) {
+        this.studentsList.forEach(x -> x.changeInfo(x.getCollegeName(), newCareerName));
+    }
+    public int getAverageYearOfStudents(){
+        this.averageAgeOfStudents = 0;
+        Consumer<Student> consumer = student -> {
+            LOGGER.info(""+student.getAge());
+            this.averageAgeOfStudents += student.getAge();
+        };
+        this.studentsList.forEach(student -> {
+            consumer.accept(student);
+        });
+        return this.averageAgeOfStudents / this.studentsList.size();
+    }
+    public ArrayList<Student> getStudentsWithTheSameAge(int age){
+        ArrayList<Student> result;
+        Function<ArrayList<Student>, ArrayList<Student>> function = (studentList) -> {
+            ArrayList<Student> studentsWithTheSameAge = new ArrayList<>();
+            studentList.forEach(student -> {
+                if (student.getAge() == age){
+                    LOGGER.info("Student: "+student.getFirstName()+" "+student.getLastName()+". Age: "+student.getAge());
+                    studentsWithTheSameAge.add(student);
+                }
+            });
+            return studentsWithTheSameAge;
+        };
+        result = function.apply(this.studentsList);
+        return result;
     }
 
     //Showing methods
@@ -101,5 +152,4 @@ public class University {
                 "\n"+professorsList.size()+" are professors"+
                 "\n"+studentsList.size()+" are students");
     }
-
 }
