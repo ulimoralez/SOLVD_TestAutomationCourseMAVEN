@@ -76,8 +76,9 @@ public class Student extends Person implements IStudent{
     @Override
     public String toString() {
         return "Student{" +
-                "collegeName='" + collegeName + '\'' +
-                ", careerName='" + careerName + '\'' +
+                "FirstName = '" + super.getFirstName() + '\'' +
+                ", LastName ='" + super.getLastName() + '\'' +
+                ", Age ='" + super.getAge() + '\'' +
                 '}';
     }
     @Override

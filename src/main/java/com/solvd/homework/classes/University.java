@@ -6,6 +6,8 @@ import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class University {
     private static final Logger LOGGER = Logger.getLogger(University.class.getName());
@@ -136,6 +138,53 @@ public class University {
         result = function.apply(this.studentsList);
         return result;
     }
+
+    //Non-Terminal operations Stream
+    public ArrayList<Student> filterStudentsForFirstname(String pattern){
+        ArrayList<Student> result = new ArrayList<>(this.studentsList.stream()
+                .filter(student -> student.getFirstName().contains(pattern))
+                .collect(Collectors.toList()));
+        return result;
+    }
+    public ArrayList<Student> filterStudentByAge(int age){
+        ArrayList<Student> students = new ArrayList<>(this.studentsList.stream()
+                .filter(student -> student.getAge() == age)
+                .collect(Collectors.toList()));
+        return students;
+    }
+    public ArrayList<Student> sortStudentByAscendantAge(){
+        ArrayList<Student> students = new ArrayList<>(this.studentsList.stream()
+                .sorted(Comparator.comparing(Student::getAge))
+                .collect(Collectors.toList()));
+        return students;
+    }
+
+    //Terminal streams
+    public Optional<Student> getMinimunAgeStudent(){
+        Stream<Student> students = this.studentsList.stream();
+
+        return students
+                .min(Comparator.comparingInt(Student::getAge));
+    }
+    public Long getTotalOfStudents(){
+        Stream<Student> students = this.studentsList.stream();
+
+        return students
+                .count();
+    }
+    public Stream<Student> addYearsOnStudentsAge(int age){
+        Stream<Student> students = this.studentsList.stream();
+        students.forEach(student -> {
+            student.setAge(student.getAge() + age);
+            LOGGER.info("Age of: "+student);
+        });
+        return students;
+    }
+    public Optional<Student> getFirstStudent(){
+        Stream<Student> studentStream = this.studentsList.stream();
+        return studentStream.findFirst();
+    }
+
 
     //Showing methods
     public void showProfessorsList(){

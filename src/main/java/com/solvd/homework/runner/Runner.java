@@ -1,14 +1,11 @@
-package com.solvd.homework;
+package com.solvd.homework.runner;
 
-import com.solvd.homework.classes.Student;
 import com.solvd.homework.classes.University;
 import com.solvd.homework.enums.StudyTopic;
 import com.solvd.homework.exceptions.TooMuchStudyHours;
 import com.solvd.homework.utils.CreatedObjects;
 
 import java.util.Date;
-import java.util.Locale;
-import java.util.function.Function;
 import java.util.logging.Logger;
 
 public class Runner {

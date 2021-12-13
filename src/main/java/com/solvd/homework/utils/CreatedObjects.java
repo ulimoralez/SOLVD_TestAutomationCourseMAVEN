@@ -6,6 +6,9 @@ import com.solvd.homework.enums.OperativeSystem;
 import com.solvd.homework.enums.ProgrammingLanguage;
 
 public final class CreatedObjects {
+    public static University university = new University("SOLVD", 2021);
+    public static University university2 = new University("JAVA", 2000);
+
     public static final Child CHILD1 = new Child();
     public static final Child CHILD2 = new Child();
     public static final Child CHILD3 = new Child();

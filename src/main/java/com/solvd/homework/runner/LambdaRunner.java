@@ -1,4 +1,4 @@
-package com.solvd.homework;
+package com.solvd.homework.runner;
 
 import com.solvd.homework.classes.Company;
 import com.solvd.homework.classes.Programmer;
@@ -6,7 +6,6 @@ import com.solvd.homework.classes.Student;
 import com.solvd.homework.classes.University;
 import com.solvd.homework.enums.OperativeSystem;
 import com.solvd.homework.enums.ProgrammingLanguage;
-import com.solvd.homework.enums.StudyTopic;
 import com.solvd.homework.utils.CreatedObjects;
 
 import java.util.ArrayList;
