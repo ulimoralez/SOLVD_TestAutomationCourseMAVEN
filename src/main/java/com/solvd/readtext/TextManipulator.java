@@ -1,6 +1,7 @@
 package com.solvd.readtext;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.RegExUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
@@ -11,22 +12,27 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 public class TextManipulator{
-	public static void main( String[] args ){
+	public static void main( String[] args ) throws IOException{
 		final File FILE = new File( "src/main/resources/readtext/AlanTuringWikipedia.txt" );
 		final File WORDCOUNTERFILE = new File( "src/main/resources/readtext/wordCounter.txt" );
 		Logger LOGGER = Logger.getLogger( TextManipulator.class.getName( ) );
-		String wordCounter;
+		int wordCounter;
 		String fileContent = readLinesFromFile( FILE.getPath( ) );
 		
 		LOGGER.info( "Original content" + fileContent );
 		
-		HashSet< String > uniqueWords = new HashSet<>( Arrays.asList( fileContent.split( " " ) ) );
+		HashSet< String > uniqueWords = new HashSet<>( Arrays.asList( StringUtils.split(
+				RegExUtils.removeAll( FileUtils.readFileToString( FILE, StandardCharsets.UTF_8 ).toLowerCase( ),
+						Pattern.compile( "[^a-z ]" ) ) ) ) );
+		
+		wordCounter = uniqueWords.size( );
 		
 		try{
-			LOGGER.info( "Unique words in the text: " + uniqueWords.size( ) );
-			FileUtils.writeStringToFile( WORDCOUNTERFILE, "Words in " + FILE.getName( ) + ": " + uniqueWords.size( ),
+			LOGGER.info( "Unique words in the text: " + wordCounter );
+			FileUtils.writeStringToFile( WORDCOUNTERFILE, "Words in " + FILE.getName( ) + ": " + wordCounter,
 					StandardCharsets.UTF_8 );
 		}catch( IOException e ){
 			e.printStackTrace( );
