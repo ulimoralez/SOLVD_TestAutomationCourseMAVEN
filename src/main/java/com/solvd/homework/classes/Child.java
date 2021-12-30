@@ -7,16 +7,18 @@ import java.util.logging.Logger;
 
 public final class Child extends Person{
 	
+	private static final Logger staticLogger = Logger.getLogger( Child.class.getName( ) );
+	private static final int childAge;
+	private static final String favouriteFood;
 	public static String FAVOURITE_DRINK = "Grape Juice";
-	private static Logger staticLogger = Logger.getLogger( Child.class.getName( ) );
-
+	
 	static{
-		final int childAge = 7;
-		String favouriteFood = "Pizza";
+		childAge = 7;
+		favouriteFood = "Pizza";
 	}
 	
-	private Logger log = Logger.getLogger( Child.class.getName( ) );
-	private Pets favouritePet = Pets.CAT;
+	private final Logger log = Logger.getLogger( Child.class.getName( ) );
+	private final Pets favouritePet = Pets.CAT;
 	
 	//Constructors
 	public Child( ){
@@ -26,19 +28,18 @@ public final class Child extends Person{
 		super( firstName, lastName );
 	}
 	
-	public static void sayFAvouriteGame( ){
+	public static void sayFavouriteGame( ){
 		staticLogger.info( "I love to play Minecraft" );
 	}
 	
 	//Methods and functions
 	//Make a final method does not change anything because anyway this class can't be inherited
-	final void sayHello( ){
-		log.info( "Helloooo!" );
+	public void sayHello( ){
+		log.info( "Helloooo! my name is: " + this.getFirstName( ) + ". Im " + childAge + " years old. My favourite food is " + favouriteFood );
 	}
 	
 	//Overriding interface functions
 	
-	@Override
 	public void changeInfo( String firstName, String lastName, int age ){
 		super.changeInfo( firstName, lastName );
 		if( age < 0 || age > 18 ){
@@ -59,4 +60,5 @@ public final class Child extends Person{
 	public void favouritePet( ){
 		log.fine( "My favourite pet is: " + favouritePet );
 	}
+	
 }

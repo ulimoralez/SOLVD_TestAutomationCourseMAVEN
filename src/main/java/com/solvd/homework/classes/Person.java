@@ -34,11 +34,6 @@ public class Person implements IPerson, IHuman{
 		this.lastName = lastName;
 	}
 	
-	public Person( String firstName, String lastName, String gender, int age ){
-		this( firstName, lastName, gender );
-		setAge( age );
-	}
-	
 	public Person( String firstName, String lastName, String gender ){
 		this( firstName, lastName );
 		this.gender = gender;
@@ -88,25 +83,10 @@ public class Person implements IPerson, IHuman{
 	}
 	
 	//Methods and Functions
-	public void changeInfo( String firstName, String lastName, String gender, int age ){
-		changeInfo( firstName, lastName );
-		this.gender = gender;
-		setAge( age );
-	}
 	
 	public void changeInfo( String firstName, String lastName ){
 		this.firstName = firstName;
 		this.lastName = lastName;
-	}
-	
-	public void changeInfo( String firstName, String lastName, int age ){
-		changeInfo( firstName, lastName );
-		setAge( age );
-	}
-	
-	public void changeInfo( String firstName, String lastName, String gender ){
-		changeInfo( firstName, lastName );
-		this.gender = gender;
 	}
 	
 	@Override

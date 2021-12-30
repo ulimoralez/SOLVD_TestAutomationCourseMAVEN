@@ -8,30 +8,29 @@ import java.util.logging.Logger;
 public class Professor extends Person implements IProfessor{
 	
 	private static final Logger LOGGER = Logger.getLogger( Professor.class.getName( ) );
-	private String studyArea;
+	private final ArrayList< Integer > professorIDs = new ArrayList<>( );
+	private final String studyArea;
 	private String collegeName;
 	private int id;
-	private ArrayList< Integer > professorIDs = new ArrayList<>( );
 	private String favouriteBook;
 	
-	public Professor( String firstName, String lastName, String studyArea, String collegeName, int professorID ){
-		this( firstName, lastName, studyArea );
+	public Professor( int professorID, String firstName, String lastName, String studyArea, String collegeName ){
+		this( professorID, firstName, lastName, studyArea );
 		this.collegeName = collegeName;
-		this.id = professorID;
 	}
 	
-	public Professor( String firstName, String lastName, String studyArea ){
+	public Professor( int professorID, String firstName, String lastName, String studyArea ){
 		super( firstName, lastName );
+		this.id = professorID;
 		this.studyArea = studyArea;
 	}
 	
-	public Professor( String firstName, String lastName, String gender, int age, String studyArea, String collegeName,
-	                  int professorID, String favouriteBook ){
-		this( firstName, lastName, studyArea );
+	public Professor( int professorID, String firstName, String lastName, String studyArea, String collegeName,
+	                  String gender, int age, String favouriteBook ){
+		this( professorID, firstName, lastName, studyArea );
 		super.setAge( age );
 		super.setGender( gender );
 		this.collegeName = collegeName;
-		this.id = professorID;
 		this.favouriteBook = favouriteBook;
 	}
 	
@@ -45,9 +44,10 @@ public class Professor extends Person implements IProfessor{
 	
 	//Overriding interface and super class methods
 	public void changeId( int professorId ){
-		for( int i = 0; i < professorIDs.size( ); i++ ){
-			if( professorIDs.get( i ) == professorId ){
+		for( Integer professorID : professorIDs ){
+			if( professorID == professorId ){
 				this.id = professorId;
+				break;
 			}
 		}
 	}
@@ -69,5 +69,13 @@ public class Professor extends Person implements IProfessor{
 	@Override
 	public String themeToTeach( ){
 		return "Java OOP";
+	}
+	
+	public String getCollegeName( ){
+		return collegeName;
+	}
+	
+	public void setCollegeName( String collegeName ){
+		this.collegeName = collegeName;
 	}
 }

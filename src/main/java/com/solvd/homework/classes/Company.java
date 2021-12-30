@@ -7,14 +7,15 @@ import com.solvd.homework.functionalInterfaces.IProgrammingLanguagesProcessor;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 import java.util.logging.Logger;
 
 public class Company{
 	private final Logger LOGGER = Logger.getLogger( Company.class.getName( ) );
 	private String name;
 	private Date dateOfFoundation;
-	private ArrayList< ProgrammingLanguage > programmingLanguages = new ArrayList<>( );
-	private ArrayList< Programmer > programmersList = new ArrayList<>( );
+	private ArrayList< ProgrammingLanguage > programmingLanguages;
+	private ArrayList< Programmer > programmersList;
 	
 	public Company( String name, Date dateOfFoundation, ArrayList< ProgrammingLanguage > programmingLanguages, ArrayList< Programmer > programmersList ){
 		this.name = name;
@@ -60,7 +61,7 @@ public class Company{
 		IProgrammingLanguagesProcessor programmingLanguagesProcessor = programmerList -> {
 			ArrayList< Programmer > programmersInJava = new ArrayList<>( );
 			programmerList.forEach( programmer -> {
-				if( programmer.getFavoriteLanguage( ) == ProgrammingLanguage.JAVA.name( ) ){
+				if( Objects.equals( programmer.getFavoriteLanguage( ), ProgrammingLanguage.JAVA.name( ) ) ){
 					LOGGER.info( "Programmer: " + programmer.getFirstName( ) + " " + programmer.getLastName( ) );
 					programmersInJava.add( programmer );
 				}
@@ -76,7 +77,7 @@ public class Company{
 		IOperativeSystemProcessor iOperativeSystemProcessor = ( programmersList, os ) -> {
 			ArrayList< Programmer > programmersWithOs = new ArrayList<>( );
 			programmersList.forEach( programmer -> {
-				if( programmer.getFavoriteOS( ) == os.name( ) ){
+				if( Objects.equals( programmer.getFavoriteOS( ), os.name( ) ) ){
 					LOGGER.info( "Programmer with " + os.name( ) + ". Name: " + programmer.getFirstName( ) + " LastName: " + programmer.getLastName( ) );
 					programmersWithOs.add( programmer );
 				}

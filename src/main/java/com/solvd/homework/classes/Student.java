@@ -13,9 +13,6 @@ public class Student extends Person implements IStudent{
 	private String careerName;
 	
 	//Constructors
-	public Student( ){
-	
-	}
 	
 	public Student( String firstName, String lastName, String gender, int age, String collegeName, String careerName ){
 		this( firstName, lastName, gender, collegeName, careerName );
@@ -67,20 +64,10 @@ public class Student extends Person implements IStudent{
 		LOGGER.info( "I love drink coffee" );
 	}
 	
-	public Student( String firstName, String lastName, int age, String collegeName, String careerName ){
-		super( firstName, lastName, age );
-		changeInfo( collegeName, careerName );
-	}
-	
-	public Student( String firstName, String lastName, String collegeName, String careerName ){
-		super( firstName, lastName );
-		changeInfo( collegeName, careerName );
-	}
-	
 	//Lambdas
 	public static void CheckCollege( Student student, String collegeName ){
 		IStudentProcessor processor = ( Ostudent, OcollegeName ) -> {
-			if( Ostudent.collegeName == collegeName ){
+			if( Objects.equals( Ostudent.collegeName, collegeName ) ){
 				LOGGER.fine( "The student: " + Ostudent.getFirstName( ) + " " + Ostudent.getLastName( ) + " has the same " +
 						"college name than the University." );
 			}else{

@@ -11,23 +11,23 @@ import java.util.stream.Stream;
 
 public class University{
 	private static final Logger LOGGER = Logger.getLogger( University.class.getName( ) );
-	private final int currentYear = new Date( ).getYear( );
+	//The unique way to create if it's in the constructor
+	private final HashSet< String > universityMembers = new HashSet<>( );
+	//Key = professorId - Value = Proffesor firstname and lastname
+	private final HashMap< Integer, String > professorsList = new HashMap<>( );
+	//Ordered as inserted
+	private final LinkedHashSet< String > classDates = new LinkedHashSet<>( );
+	//Careers that have the Uni
+	private final GenericLinkedList< String > careers = new GenericLinkedList<>( );
 	//Have no order and can have duplicates
 	ArrayList< Student > studentsList = new ArrayList<>( );
 	private String name;
 	private int yearOfFoundation;
-	//The unique way to create it it's in the constructor
-	private HashSet< String > universityMembers = new HashSet( );
-	//Key = professorId - Value = Proffesor firstname and lastname
-	private HashMap< Integer, String > professorsList = new HashMap( );
-	//Ordered as inserted
-	private LinkedHashSet< String > classDates = new LinkedHashSet( );
-	//Careers that have the Uni
-	private GenericLinkedList< String > careers = new GenericLinkedList<>( );
 	private int averageAgeOfStudents = 0;
 	
 	public University( String name, int yearOfFoundation ){
 		this.name = name;
+		int currentYear = Calendar.getInstance( ).get( Calendar.YEAR );
 		if( yearOfFoundation > 1000 || yearOfFoundation < currentYear ){
 			this.yearOfFoundation = yearOfFoundation;
 		}else{
@@ -36,23 +36,21 @@ public class University{
 	}
 	
 	public static void checkStudents( University university ){
-		university.studentsList.forEach( student -> {
-			Student.CheckCollege( student, university.name );
-		} );
+		university.studentsList.forEach( student -> Student.CheckCollege( student, university.name ) );
 	}
 	
 	//Adders
 	public void addProfessor( Professor... professor ){
-		for( int i = 0; i < professor.length; i++ ){
-			this.universityMembers.add( professor[i].getFirstName( ) + " " + professor[i].getLastName( ) );
-			professorsList.put( professor[i].getId( ), professor[i].getFirstName( ) + " " + professor[i].getLastName( ) );
+		for( Professor value : professor ){
+			this.universityMembers.add( value.getFirstName( ) + " " + value.getLastName( ) );
+			professorsList.put( value.getId( ), value.getFirstName( ) + " " + value.getLastName( ) );
 		}
 	}
 	
 	public void addStudent( Student... student ){
-		for( int i = 0; i < student.length; i++ ){
-			this.universityMembers.add( student[i].getFirstName( ) + " " + student[i].getLastName( ) );
-			this.studentsList.add( student[i] );
+		for( Student value : student ){
+			this.universityMembers.add( value.getFirstName( ) + " " + value.getLastName( ) );
+			this.studentsList.add( value );
 		}
 	}
 	
@@ -102,9 +100,7 @@ public class University{
 	
 	public void changeUniversityName( String newName ){
 		this.name = newName;
-		this.studentsList.forEach( student -> {
-			student.setCollegeName( newName );
-		} );
+		this.studentsList.forEach( student -> student.setCollegeName( newName ) );
 	}
 	
 	//Foreach implements a Consumer function, I think it applies to the task
@@ -118,9 +114,7 @@ public class University{
 			LOGGER.info( "" + student.getAge( ) );
 			this.averageAgeOfStudents += student.getAge( );
 		};
-		this.studentsList.forEach( student -> {
-			consumer.accept( student );
-		} );
+		this.studentsList.forEach( consumer );
 		return this.averageAgeOfStudents / this.studentsList.size( );
 	}
 	
@@ -142,24 +136,21 @@ public class University{
 	
 	//Non-Terminal operations Stream
 	public ArrayList< Student > filterStudentsForFirstname( String pattern ){
-		ArrayList< Student > result = new ArrayList<>( this.studentsList.stream( )
+		return new ArrayList<>( this.studentsList.stream( )
 				.filter( student -> student.getFirstName( ).contains( pattern ) )
 				.collect( Collectors.toList( ) ) );
-		return result;
 	}
 	
 	public ArrayList< Student > filterStudentByAge( int age ){
-		ArrayList< Student > students = new ArrayList<>( this.studentsList.stream( )
+		return new ArrayList<>( this.studentsList.stream( )
 				.filter( student -> student.getAge( ) == age )
 				.collect( Collectors.toList( ) ) );
-		return students;
 	}
 	
 	public ArrayList< Student > sortStudentByAscendantAge( ){
-		ArrayList< Student > students = new ArrayList<>( this.studentsList.stream( )
+		return new ArrayList<>( this.studentsList.stream( )
 				.sorted( Comparator.comparing( Student::getAge ) )
 				.collect( Collectors.toList( ) ) );
-		return students;
 	}
 	
 	//Terminal streams

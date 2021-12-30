@@ -13,12 +13,9 @@ public class Programmer extends Person implements IProgrammer{
 	private String favoriteOS;
 	
 	//Constructors
-	public Programmer( ){
 	
-	}
-	
-	public Programmer( String firstName, String lastName, String gender, int age, int yearsOfExperience, String favoriteLanguage, String favoriteOS ){
-		super( firstName, lastName, gender, age );
+	public Programmer( String firstName, String lastName, String gender, int yearsOfExperience, String favoriteLanguage, String favoriteOS ){
+		super( firstName, lastName, gender );
 		changeInfo( yearsOfExperience, favoriteLanguage, favoriteOS );
 	}
 	
@@ -27,21 +24,6 @@ public class Programmer extends Person implements IProgrammer{
 		this.yearsOfExperience = yearsOfExperience;
 		this.favoriteLanguage = favoriteLanguage;
 		this.favoriteOS = favoriteOS;
-	}
-	
-	public Programmer( String firstName, String lastName, int age, int yearsOfExperience, String favoriteLanguage, String favoriteOS ){
-		super( firstName, lastName, age );
-		changeInfo( yearsOfExperience, favoriteLanguage, favoriteOS );
-	}
-	
-	public Programmer( String firstName, String lastName, String gender, int yearsOfExperience, String favoriteLanguage, String favoriteOS ){
-		super( firstName, lastName, gender );
-		changeInfo( yearsOfExperience, favoriteLanguage, favoriteOS );
-	}
-	
-	public Programmer( String firstName, String lastName, int yearsOfExperience, String favoriteLanguage, String favoriteOS ){
-		super( firstName, lastName );
-		changeInfo( yearsOfExperience, favoriteLanguage, favoriteOS );
 	}
 	
 	//Getters and Setters
@@ -119,7 +101,7 @@ public class Programmer extends Person implements IProgrammer{
 	
 	@Override
 	public void drink( ){
-		LOGGER.info( "I drink coffe!" );
+		LOGGER.info( "I drink coffee!" );
 	}
 	
 	//Overriding interface methods
