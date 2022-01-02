@@ -65,16 +65,7 @@ public class Student extends Person implements IStudent{
 	}
 	
 	//Lambdas
-	public static void CheckCollege( Student student, String collegeName ){
-		IStudentProcessor processor = ( Ostudent, OcollegeName ) -> {
-			if( Objects.equals( Ostudent.collegeName, collegeName ) ){
-				LOGGER.fine( "The student: " + Ostudent.getFirstName( ) + " " + Ostudent.getLastName( ) + " has the same " +
-						"college name than the University." );
-			}else{
-				LOGGER.severe( "The student: " + Ostudent.getFirstName( ) + " " + Ostudent.getLastName( ) + " has not the same " +
-						"college name than the University :( ." );
-			}
-		};
+	public static void CheckCollege( Student student, String collegeName, IStudentProcessor processor ){
 		processor.checkCollege( student, collegeName );
 	}
 	

@@ -4,11 +4,13 @@ import com.solvd.homework.classes.Company;
 import com.solvd.homework.classes.Programmer;
 import com.solvd.homework.enums.OperativeSystem;
 import com.solvd.homework.enums.ProgrammingLanguage;
+import com.solvd.homework.functionalInterfaces.IOperativeSystemProcessor;
 import com.solvd.homework.utils.CreatedObjects;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 import java.util.logging.Logger;
 
 public class CompanyRunner{
@@ -38,10 +40,20 @@ public class CompanyRunner{
 		company.setProgrammersList( programmers );
 		company.setProgrammingLanguages( programmingLanguages );
 		
-		LOGGER.info( "" + company.getProgrammersWithOs( OperativeSystem.WINDOWS ) );
+		IOperativeSystemProcessor iOperativeSystemProcessor = ( programmersList, os ) -> {
+			ArrayList< Programmer > programmersWithOs = new ArrayList<>( );
+			programmersList.forEach( programmer -> {
+				if( Objects.equals( programmer.getFavoriteOS( ), os.name( ) ) ){
+					LOGGER.info( "Programmer with " + os.name( ) + ". Name: " + programmer.getFirstName( ) + " LastName: " + programmer.getLastName( ) );
+					programmersWithOs.add( programmer );
+				}
+			} );
+			return programmersWithOs;
+		};
+		
+		LOGGER.info( "" + company.getProgrammersWithOs( iOperativeSystemProcessor, OperativeSystem.WINDOWS ) );
 		LOGGER.info( "" + company.getDateOfFoundation( ) );
 		LOGGER.info( "" + company.getProgrammingLanguages( ) );
 		LOGGER.info( "" + company.getProgrammersList( ) );
-		LOGGER.info( "" + company.getJavaProgrammers( ) );
 	}
 }

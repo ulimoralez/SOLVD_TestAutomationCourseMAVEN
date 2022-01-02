@@ -1,6 +1,7 @@
 package com.solvd.homework.classes;
 
 import com.solvd.homework.customlinkedlist.GenericLinkedList;
+import com.solvd.homework.functionalInterfaces.IStudentProcessor;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -35,8 +36,12 @@ public class University{
 		}
 	}
 	
-	public static void checkStudents( University university ){
-		university.studentsList.forEach( student -> Student.CheckCollege( student, university.name ) );
+	public static void checkStudents( IStudentProcessor iStudentProcessor, University university ){
+		university.studentsList.forEach( student -> iStudentProcessor.checkCollege( student, university.getName( ) ) );
+	}
+	
+	public String getName( ){
+		return name;
 	}
 	
 	//Adders
@@ -87,10 +92,6 @@ public class University{
 	
 	public GenericLinkedList getCareers( ){
 		return this.careers;
-	}
-	
-	public String getName( ){
-		return name;
 	}
 	
 	//Methods

@@ -7,7 +7,6 @@ import com.solvd.homework.functionalInterfaces.IProgrammingLanguagesProcessor;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Objects;
 import java.util.logging.Logger;
 
 public class Company{
@@ -56,34 +55,15 @@ public class Company{
 		this.programmersList = programmersList;
 	}
 	
-	public ArrayList< Programmer > getJavaProgrammers( ){
+	public ArrayList< Programmer > getJavaProgrammers( IProgrammingLanguagesProcessor programmingLanguagesProcessor ){
 		ArrayList< Programmer > result;
-		IProgrammingLanguagesProcessor programmingLanguagesProcessor = programmerList -> {
-			ArrayList< Programmer > programmersInJava = new ArrayList<>( );
-			programmerList.forEach( programmer -> {
-				if( Objects.equals( programmer.getFavoriteLanguage( ), ProgrammingLanguage.JAVA.name( ) ) ){
-					LOGGER.info( "Programmer: " + programmer.getFirstName( ) + " " + programmer.getLastName( ) );
-					programmersInJava.add( programmer );
-				}
-			} );
-			return programmersInJava;
-		};
 		result = programmingLanguagesProcessor.getProgrammerIn( this.programmersList );
 		return result;
 	}
 	
-	public ArrayList< Programmer > getProgrammersWithOs( OperativeSystem operativeSystem ){
+	public ArrayList< Programmer > getProgrammersWithOs( IOperativeSystemProcessor iOperativeSystemProcessor,
+	                                                     OperativeSystem operativeSystem ){
 		ArrayList< Programmer > result;
-		IOperativeSystemProcessor iOperativeSystemProcessor = ( programmersList, os ) -> {
-			ArrayList< Programmer > programmersWithOs = new ArrayList<>( );
-			programmersList.forEach( programmer -> {
-				if( Objects.equals( programmer.getFavoriteOS( ), os.name( ) ) ){
-					LOGGER.info( "Programmer with " + os.name( ) + ". Name: " + programmer.getFirstName( ) + " LastName: " + programmer.getLastName( ) );
-					programmersWithOs.add( programmer );
-				}
-			} );
-			return programmersWithOs;
-		};
 		result = iOperativeSystemProcessor.getProgrammersIn( this.programmersList, operativeSystem );
 		return result;
 	}
