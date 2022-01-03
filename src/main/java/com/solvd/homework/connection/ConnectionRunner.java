@@ -3,9 +3,9 @@ package com.solvd.homework.connection;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
-public class ClientsRunner{
-	public static final ConncetionPool CONNECTION_POOL = ConncetionPool.getInstance( );
-	private static final Logger LOGGER = Logger.getLogger( ClientsRunner.class.getName( ) );
+public class ConnectionRunner{
+	public static final ConncetionPool CONNECTION_POOL = ConncetionPool.getInstance( 5 );
+	private static final Logger LOGGER = Logger.getLogger( ConnectionRunner.class.getName( ) );
 	private static final int TIMEOUT = 1000;
 	private static final int EXECUTE_QUERY_TIMEOUT = 500;
 	

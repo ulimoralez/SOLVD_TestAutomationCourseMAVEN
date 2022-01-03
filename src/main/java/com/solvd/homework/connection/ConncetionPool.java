@@ -24,9 +24,9 @@ public class ConncetionPool{
 	}
 	
 	//Methods & Functions
-	public static ConncetionPool getInstance( ){
+	public static ConncetionPool getInstance( int limitOfConnections ){
 		if( instance == null ){
-			instance = new ConncetionPool( 5 );
+			instance = new ConncetionPool( limitOfConnections );
 		}
 		return instance;
 	}
